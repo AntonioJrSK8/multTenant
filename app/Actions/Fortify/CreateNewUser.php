@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
-use Illuminate\Support\Str;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -31,8 +30,7 @@ class CreateNewUser implements CreatesNewUsers
         ])->validate();
         
         $tenant = Tenant::create([
-            'name' => $input['tenant'],
-            'uuid' => (string) Str::uuid()
+            'name' => $input['tenant']
         ]);
 
         return $tenant->users()->create([
