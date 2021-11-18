@@ -32,7 +32,7 @@ class CreateNewUser implements CreatesNewUsers
         
         $tenant = Tenant::create([
             'name' => $input['tenant'],
-            'uuid' => Str::uuid()
+            'uuid' => (string) Str::uuid()
         ]);
 
         return $tenant->users()->create([
