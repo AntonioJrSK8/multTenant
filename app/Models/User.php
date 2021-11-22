@@ -60,7 +60,7 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function tenent()
+    public function tenant()
     {
         return $this->belongsTo(Tenant::class);
     }
