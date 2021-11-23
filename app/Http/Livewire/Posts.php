@@ -7,9 +7,17 @@ use Livewire\Component;
 class Posts extends Component
 {   
     public $msg = 'mensagem de two-way data binding';
-    
+
     public function render()
     {
-        return view('livewire.posts');
+        $posts = \App\Models\Post::all();
+
+        return view('livewire.posts', compact('posts'));
+
+    }
+
+    public function create()
+    {
+        dd('debgu...');
     }
 }
