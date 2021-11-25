@@ -4,13 +4,17 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use \App\Models\Post;
+use App\Models\User;
+use Illuminate\Http\Request;
 
 class Posts extends Component
 {   
-    public $title = 'mensagem de two-way data binding';
-    
+    public $title = '';
+    public $body = '';
+
     protected $rules = [
-        'title' =>'required|min:3|max:255'
+        'title' => 'required|min:3|max:255',
+        'body'  => 'required|min:3|max:255'
     ];
 
     public function render()
@@ -20,17 +24,22 @@ class Posts extends Component
         return view('livewire.posts', compact('posts'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
         $this->validate();
 
-        \App\Models\Post::create([
-            'user_id' => 1,
-            'tenant_id' => 1,
-            'body' => 'ok não nula',
-            'title' => $this->title
-        ]);
+        //dd($request->all());
+
+        $post = $request->user()
+                        ->posts()
+                        ->create([
+                            'title' => $this->title,
+                            'body'  => $this->body
+                        ]);
 
         $this->title = '';
+        $this->body = '';
+
+        return redirect()->back()->withSuccess('Cadastro realizado');
     }
 }
