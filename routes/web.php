@@ -12,7 +12,7 @@ use App\Http\Livewire\{
 Route::resource('post', PostController::class);
 
 //usando livewire
-Route::get('postagem', Posts::class);
+Route::get('postagem', Posts::class)->middleware(['auth:sanctum', 'verified']);
 
 Route::get('/', function () {
     return view('welcome');

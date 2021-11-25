@@ -1,11 +1,14 @@
 <div>
     Posts
-    <p>{{ $msg }}</p>
+    <p>{{ $title }}</p>
 
-    <input type='text' name='msg' id='msg' wire:model='msg'>
     <hr><br>
 
     <form method='post' wire:submit.prevent='create'>
+        <input type="text" name="title" id="title" wire:model='title'>
+        @error('title')
+            {{ $message }}
+        @enderror
         <button type='submit'>Enviar</button>
     </form>
 
