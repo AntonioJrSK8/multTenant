@@ -1,6 +1,8 @@
 <div>
     Posts
-
+    <div class="">
+            <input type="text" name="search" id="search" wire:model='search'>
+    </div>
     <hr><br>
     @if($errors->any())
         <div class="alert alert-danger">
