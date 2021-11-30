@@ -19,7 +19,7 @@ class Posts extends Component
 
     public function render()
     {
-        $posts = Post::all();
+        $posts = Post::paginate(5);
 
         return view('livewire.posts', compact('posts'));
     }

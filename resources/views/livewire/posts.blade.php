@@ -37,4 +37,8 @@
         <p>Nenhum registro</p>
 
     @endforelse
+
+    <div class="">
+        {{ $posts->links() }}
+    </div>
 </div>
