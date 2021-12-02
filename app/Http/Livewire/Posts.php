@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Http\Requests\PostFormRequest;
 use Livewire\Component;
 use \App\Models\Post;
 use App\Models\User;
@@ -33,7 +34,7 @@ class Posts extends Component
         return view('livewire.posts', compact('posts'));
     }
 
-    public function create(Request $request)
+    public function create(PostFormRequest $request)
     {
         $this->validate();
 
